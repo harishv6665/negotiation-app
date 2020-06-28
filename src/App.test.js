@@ -1,9 +1,26 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { shallow, mount } from 'enzyme';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App tests', () => {
+
+    it('should be defined', () => {
+        expect(App).toBeDefined();
+    });
+
+    it('should match to snapshot', () => {
+        const wrapper = mount(<App />);
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should match the DOM structure', () => {
+        const wrapper = shallow(<App />);
+        expect(wrapper.find('Header').length).toBe(1);
+        expect(wrapper.find('div').length).toBe(1);
+        expect(wrapper.find('div Header').length).toBe(1);
+        expect(wrapper.find('main').length).toBe(1);
+        expect(wrapper.find('Home').length).toBe(1);
+        expect(wrapper.find('div main Home').length).toBe(1);
+    })
+
 });

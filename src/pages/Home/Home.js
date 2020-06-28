@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import styles from "./Home.module.css";
 import Modal from "../../components/Modal/Modal";
 import Tab from "./components/Tab/Tab";
@@ -19,9 +18,10 @@ export default class Home extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=3dcbba7ca4300e233aff5675be8082ab")
-            .then(response => {
-                this.setState({ temperature: response?.data?.main?.temp })
+        fetch("https://api.openweathermap.org/data/2.5/weather?q=London&appid=3dcbba7ca4300e233aff5675be8082ab")
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ temperature: data.main.temp });
             })
             .catch(error => {
                 console.error(error);
@@ -62,7 +62,7 @@ export default class Home extends React.Component {
                     <div className={styles.modal}>
                         <p className={styles.modal__text}>Maximum offer was: <strong>{employerValue}</strong></p>
                         <br/>
-                        <p className={styles.modal__text}>Minimum expected salary was: <strong>{employeeValue}</strong></p>
+                        <p className={styles.modal__text}>Minimum expected salary was: <strong> {employeeValue}</strong></p>
                     </div>
                 </Modal>}
             </div>

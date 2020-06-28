@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import styles from "./Home.module.css";
 import Modal from "../../components/Modal/Modal";
 import Tab from "./components/Tab/Tab";
@@ -18,7 +19,7 @@ export default class Home extends React.Component {
     }
 
     componentDidMount() {
-        fetch("https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=439d4b804bc8187953eb36d2a8c26a02")
+        axios.get("https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=3dcbba7ca4300e233aff5675be8082ab")
             .then(response => {
                 this.setState({ temperature: response?.data?.main?.temp })
             })

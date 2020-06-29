@@ -30,14 +30,13 @@ describe('App tests', () => {
         const wrapper = mount(<Tab onSubmit={mockFn} />);
 
         // Setting employee tab to 1000
-        wrapper.find('div div input').value = 1000;
-        wrapper.find('div div button').simulate('click');
+        wrapper.find('div div input').simulate('change', { target: { value: 10000 } });
 
         // switching to employer tab
         wrapper.find('div ul li').at(1).simulate('click');
 
         // Setting employer tab to 1000
-        wrapper.find('div div input').value = 1000;
+        wrapper.find('div div input').simulate('change', { target: { value: 10000 } });
         wrapper.find('div div button').simulate('click');
 
         expect(mockFn).toHaveBeenCalled();
@@ -64,22 +63,17 @@ describe('App tests', () => {
         const wrapper = mount(<Tab onSubmit={mockFn}/>);
 
         expect(wrapper.state().employeeTab.value).toEqual('');
-        expect(wrapper.state().employeeTab.isSubmitted).toEqual(false);
 
         // changing EMPLOYEE tab input
         wrapper.find('div div input').simulate('change', { target: { value: 10000 } });
-        wrapper.find('div div button').simulate('click');
         expect(wrapper.state().employeeTab.value).toEqual(10000);
-        expect(wrapper.state().employeeTab.isSubmitted).toEqual(true);
 
         // switching to EMPLOYER tab
         wrapper.find('div ul li').at(1).simulate('click');
 
         // changing EMPLOYER tab input
         wrapper.find('div div input').simulate('change', { target: { value: 20000 } });
-        wrapper.find('div div button').simulate('click');
         expect(wrapper.state().employerTab.value).toEqual(20000);
-        expect(wrapper.state().employerTab.isSubmitted).toEqual(true);
     });
 
 });

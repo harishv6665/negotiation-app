@@ -11,12 +11,10 @@ export default class Tab extends React.Component {
             employeeTab: {
                 value: '',
                 placeholder: 'Enter minimum salary',
-                isSubmitted: false
             },
             employerTab: {
                 value: '',
                 placeholder: 'Enter maximum offer',
-                isSubmitted: false
             },
         }
         this.onTabChange = this.onTabChange.bind(this);
@@ -34,7 +32,6 @@ export default class Tab extends React.Component {
                 employeeTab: {
                     ...this.state.employeeTab,
                     value: event.target.value,
-                    isSubmitted: false
                 }
             });
         } else {
@@ -42,39 +39,25 @@ export default class Tab extends React.Component {
                 employerTab: {
                     ...this.state.employerTab,
                     value: event.target.value,
-                    isSubmitted: false
                 }
             });
         }
     }
 
     onButtonClick() {
-        const { activeTab, employeeTab, employerTab } = this.state;
-        if (activeTab === 'EMPLOYEE') {
-            this.setState({
-                employeeTab: {
-                    ...this.state.employeeTab,
-                    isSubmitted: true,
-                }
+        const { employeeTab, employerTab } = this.state;
+        if (employeeTab.value && employerTab.value) {
+            this.props.onSubmit({
+                employeeValue: employeeTab.value,
+                employerValue: employerTab.value,
             });
-            if (employerTab.isSubmitted) {
-                this.props.onSubmit({
-                    employeeValue: employeeTab.value,
-                    employerValue: employerTab.value,
-                })
-            }
         } else {
-            this.setState({
-                employerTab: {
-                    ...this.state.employerTab,
-                    isSubmitted: true,
-                }
-            });
-            if (employeeTab.isSubmitted) {
-                this.props.onSubmit({
-                    employeeValue: employeeTab.value,
-                    employerValue: employerTab.value,
-                })
+            if (!employeeTab.value) {
+                this.setState({ activeTab: 'EMPLOYEE'});
+                alert(employeeTab.placeholder);
+            } else {
+                this.setState({ activeTab: 'EMPLOYER'});
+                alert(employerTab.placeholder);
             }
         }
     }
@@ -101,7 +84,7 @@ export default class Tab extends React.Component {
                         placeholder={tabData.placeholder}
                         onChange={this.onInputChange}
                     />
-                    <Button title="Submit" onClick={this.onButtonClick}/>
+                    <Button title="Submit" onClick={this.onButtonClick} />
                 </div>
             </div>
         )

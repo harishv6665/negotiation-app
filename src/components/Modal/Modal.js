@@ -8,8 +8,8 @@ const Modal = ({ title, temperature, children, onClose }) => (
             <h4 className={styles.modal__title}>{title}</h4>
             <div className={styles.modal__body}>{children}</div>
             <footer className={styles.modal__footer}>
-                <Button onClick={onClose} title="Ok" />
-                <p className={styles.modal__footer__msg}>Current temperature in london: <strong>{temperature}</strong></p>
+                <Button onClick={onClose} title="Done" />
+                <p className={styles.modal__footer__msg}>Weather in London, GB: <strong>{temperature}&deg;C</strong></p>
             </footer>
         </div>
     </div>

@@ -32,8 +32,8 @@ describe('Modal tests', () => {
         );
         expect(wrapper.find('h4').text()).toEqual(MODAL_TITLE);
         expect(wrapper.find('.content').text()).toEqual(MODAL_CONTENT);
-        expect(wrapper.find('footer p strong').text()).toEqual(MODAL_TEMPERATURE);
-        expect(wrapper.find('footer button').text()).toEqual("Ok");
+        expect(wrapper.find('footer p strong').text()).toEqual(`${MODAL_TEMPERATURE}°C`);
+        expect(wrapper.find('footer button').text()).toEqual("Done");
     });
 
     it('should simulate button click', () => {

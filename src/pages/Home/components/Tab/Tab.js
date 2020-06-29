@@ -57,7 +57,7 @@ export default class Tab extends React.Component {
                 alert("Enter Employee's Minimum Salary");
             } else {
                 this.setState({ activeTab: 'EMPLOYER'});
-                alert("EnterEmployer's Maximum Offer");
+                alert("Enter Employer's Maximum Offer");
             }
         }
     }

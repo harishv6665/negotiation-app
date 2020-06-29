@@ -9,7 +9,7 @@
 }
 
 .input:focus {
-    border: 1px solid #1f9ff1;
+    border: 1px solid #4CAF50;
 }
 
 .input::placeholder {

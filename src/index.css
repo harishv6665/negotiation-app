@@ -7,7 +7,8 @@
 body {
   font-family: 'Lato', sans-serif;
   font-size: 14px;
-  background: #f5f6f8;
+  background: url("assets/images/bg.jpg") no-repeat center center #2d2c2c;
+  background-size: cover;
   color: #5c5e69;
 }
 

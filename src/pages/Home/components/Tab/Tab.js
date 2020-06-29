@@ -54,10 +54,10 @@ export default class Tab extends React.Component {
         } else {
             if (!employeeTab.value) {
                 this.setState({ activeTab: 'EMPLOYEE'});
-                alert(employeeTab.placeholder);
+                alert("Enter Employee's Minimum Salary");
             } else {
                 this.setState({ activeTab: 'EMPLOYER'});
-                alert(employerTab.placeholder);
+                alert("EnterEmployer's Maximum Offer");
             }
         }
     }
